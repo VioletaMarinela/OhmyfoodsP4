@@ -1,0 +1,513 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Shrikhand&display=swap");
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: white;
+  animation: fadeIn 5s forwards;
+}
+
+@keyframes disparation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+main .sectioncommande, main .sectionPalette, main .sectionRestaurants, main .sectionmenu, main .sectioninfo, main .sectionsearch, header {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+header {
+  position: relative;
+}
+header h1 {
+  grid-row: 1 / auto;
+  grid-column: 1 / auto;
+  font-family: "Shrikhand", cursive;
+}
+header a {
+  position: absolute;
+  left: 0px;
+  margin-left: 0.5em;
+  font-size: 1.5em;
+}
+
+footer {
+  grid-template-columns: repeat(1, 1fr);
+  background-color: #353535;
+  color: #ffffff;
+  text-align: left;
+  padding: 2em;
+}
+footer h2 {
+  grid-row: 1 / auto;
+  grid-column: 1 / auto;
+  font-family: "Shrikhand", cursive;
+  margin: 20px;
+}
+@media (min-width: 1024px) {
+  footer {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0;
+  }
+}
+footer li {
+  margin-bottom: 10px;
+  margin-top: 25px;
+}
+@media (min-width: 1024px) {
+  footer li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+footer li a {
+  color: #ffffff;
+}
+footer li a i {
+  padding-right: 1em;
+}
+
+.btn {
+  padding: 1em 1.5em;
+  transition: 400ms;
+}
+.btn--gradient {
+  background-image: radial-gradient(100% 50% at 20% 10%, #FF79DA 0%, #9356DC 200%);
+}
+.btn--radius {
+  border-radius: 2em;
+}
+.btn--color {
+  color: #ffffff;
+}
+.btn:hover {
+  opacity: 0.8;
+  box-shadow: 0 4px 11px rgba(0, 0, 0, 0.2);
+}
+
+.listchoix {
+  padding: 1.5em 1em;
+  text-align: left;
+  border-radius: 1em;
+  box-shadow: 0 4px 11px rgba(0, 0, 0, 0.2);
+}
+
+.card-choise .heart-away,
+button .heart-away {
+  display: block;
+  transform: scale(1);
+  transition: all 0.5s;
+}
+.card-choise .heart-hover,
+button .heart-hover {
+  display: block;
+  position: absolute;
+  top: 0;
+  transform: scale(0);
+  transition: all 0.5s;
+  background-color: black;
+  background-image: linear-gradient(0deg, #FF79DA, #9356DC);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.card-choise:hover .heart-away,
+button:hover .heart-away {
+  opacity: 0;
+  transform: scale(0);
+}
+.card-choise:hover .heart-hover,
+button:hover .heart-hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.loader {
+  display: flex;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  animation: 1s disparation 5000ms ease forwards;
+}
+.loader .loader {
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: #dbdbdb #99E2D0 transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader .loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent #FF79DA #9356DC;
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
+}
+
+main {
+  font-family: "Roboto", sans-serif;
+}
+main .sectionsearch {
+  grid-template-columns: repeat(1, 1fr);
+  padding: 1em;
+  background-color: #eaeaea;
+  background: linear-gradient(180deg, rgba(173, 173, 173, 0.35) 0%, rgba(234, 234, 234, 0.75) 15%, rgb(234, 234, 234) 100%);
+}
+main .sectionsearch i {
+  padding: 0 0.5em 0 0;
+}
+main .sectioninfo {
+  grid-template-columns: repeat(1, 1fr);
+  padding: 2em 0 3em;
+  background-color: #f6f6f6;
+  text-align: center;
+}
+main .sectioninfo h2 {
+  padding: 0 3em;
+}
+main .sectioninfo p {
+  padding: 1em 3em 2em;
+}
+main .sectionmenu {
+  grid-template-columns: repeat(1, 1fr);
+  padding: 3em 1em;
+}
+main .sectionmenu h2 {
+  grid-row: 1 / auto;
+  grid-column: 1 / 2;
+  justify-self: start;
+}
+main .sectionmenu ol {
+  grid-row: 2 / auto;
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2em;
+  margin: 1em 1em 0;
+  counter-reset: listItem;
+  justify-self: normal;
+}
+@media (min-width: 1024px) {
+  main .sectionmenu ol {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+main .sectionmenu ol li p {
+  display: inline-block;
+  position: relative;
+  left: -0.7em;
+}
+main .sectionmenu ol li p i {
+  padding: 0 1em 0 0;
+  color: #eaeaea;
+}
+main .sectionmenu ol li::before {
+  counter-increment: section;
+  content: counter(section);
+  position: relative;
+  left: -1.9em;
+  padding: 0.3em 0.6em;
+  border-radius: 70%;
+  background-color: #9356DC;
+  color: #ffffff;
+}
+main .sectionmenu ol li:hover {
+  background-color: #f2eafb;
+}
+main .sectionmenu ol li:hover i {
+  color: #9356DC;
+}
+main .sectionRestaurants {
+  grid-template-columns: repeat(1, 1fr);
+  padding: 3em 1em;
+  background: #f6f6f6;
+}
+main .sectionRestaurants h2 {
+  grid-row: 1 / auto;
+  grid-column: 1 / 2;
+  justify-self: start;
+  padding-bottom: 1em;
+}
+main .sectionRestaurants ul {
+  grid-row: 2 / auto;
+  grid-column: 1 / 2;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 3em;
+  margin: 0 2em 1em 0;
+  justify-self: normal;
+}
+@media (min-width: 1024px) {
+  main .sectionRestaurants ul {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5em;
+  }
+}
+main .sectionRestaurants ul li {
+  display: inline-block;
+  width: 100%;
+}
+main .sectionRestaurants ul li a {
+  display: block;
+  position: relative;
+  padding: 0 0 0.7rem 0;
+  color: #000000;
+  border-radius: 1.5em;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+main .sectionRestaurants ul li a .sticker {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: #99e2d0;
+  color: #008766;
+  padding: 0.4em 0.6em;
+  border-radius: 0.2em;
+}
+main .sectionRestaurants ul li a img {
+  height: 12.5em;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+  padding: 0 0 0.5em 0;
+}
+main .sectionRestaurants ul li a h3,
+main .sectionRestaurants ul li a p {
+  padding: 0 1rem 0.5rem;
+}
+main .sectionRestaurants ul li a .card-choise {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 1.5rem;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    /* Début de l'animation avec une opacité de 0 */
+  }
+  100% {
+    opacity: 1;
+    /* Fin de l'animation avec une opacité de 1 */
+  }
+}
+.content {
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  font-family: "Roboto", sans-serif;
+}
+main .sectionPalette {
+  grid-template-columns: repeat(1, 1fr);
+  padding: 0 0 3em;
+  background-color: #f6f6f6;
+}
+main .sectionPalette img {
+  object-fit: cover;
+  width: 100%;
+  height: 20em;
+  margin: 0 0 -5em 0;
+}
+main .sectionPalette .infobox {
+  padding: 2em 2.3em 0;
+  background-color: #f6f6f6;
+  border-radius: 3em 3em 0 0;
+  width: 75%;
+}
+main .sectionPalette .infobox h2 {
+  grid-row: 1 / auto;
+  grid-column: 1 / 4;
+  justify-self: start;
+  margin: 0 0 1em;
+  font-family: "Shrikhand", cursive;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+}
+main .sectionPalette .infobox h2 button {
+  margin: 0 0 0 1em;
+  font-size: 1em;
+  position: relative;
+  border: none;
+}
+main .sectionPalette .infobox h3 {
+  grid-row: 2 / auto;
+  grid-column: 1 / 4;
+  justify-self: start;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+main .sectionPalette .infobox h3::after {
+  border-bottom: 3px solid #99E2D0;
+  content: "";
+  display: block;
+  width: 3em;
+}
+main .sectionPalette .infobox ul {
+  grid-row: 3 / auto;
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1.5em;
+  margin: 1em 0 2em;
+  justify-self: normal;
+}
+main .sectionPalette .infobox ul .listchoix {
+  position: relative;
+  padding: 1em;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 1em;
+}
+main .sectionPalette .infobox ul .listchoix h4 {
+  width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: all 0.5s;
+}
+main .sectionPalette .infobox ul .listchoix p {
+  width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: all 0.5s;
+}
+main .sectionPalette .infobox ul .listchoix strong {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  transition: all 0.5s;
+}
+main .sectionPalette .infobox ul .listchoix span {
+  font-size: 1.5em;
+  position: absolute;
+  top: 0;
+  right: -5em;
+  width: 3.5em;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  color: white;
+  background: #99E2D0;
+}
+main .sectionPalette .infobox ul .listchoix .fa-check-circle {
+  transform: rotate(-360deg);
+  transition: all 0.5s;
+}
+main .sectionPalette .infobox ul .listchoix {
+  animation: show 2000ms forwards;
+  opacity: 0;
+}
+main .sectionPalette .infobox ul .listchoix--1 {
+  animation-delay: 200ms;
+}
+main .sectionPalette .infobox ul .listchoix--2 {
+  animation-delay: 400ms;
+}
+main .sectionPalette .infobox ul .listchoix--3 {
+  animation-delay: 600ms;
+}
+main .sectionPalette .infobox ul .listchoix--4 {
+  animation-delay: 800ms;
+}
+main .sectionPalette .infobox ul .listchoix--5 {
+  animation-delay: 1000ms;
+}
+main .sectionPalette .infobox ul .listchoix--6 {
+  animation-delay: 1200ms;
+}
+main .sectionPalette .infobox ul .listchoix--7 {
+  animation-delay: 1400ms;
+}
+main .sectionPalette .infobox ul .listchoix--8 {
+  animation-delay: 1600ms;
+}
+main .sectionPalette .infobox ul .listchoix--9 {
+  animation-delay: 1800ms;
+}
+@keyframes show {
+  0% {
+    transform: translateY(2em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+main .sectionPalette .infobox ul .listchoix:hover p {
+  width: 63%;
+}
+main .sectionPalette .infobox ul .listchoix:hover h4 {
+  width: 70%;
+}
+main .sectionPalette .infobox ul .listchoix:hover strong {
+  right: 6em;
+}
+main .sectionPalette .infobox ul .listchoix:hover span {
+  right: 0;
+}
+main .sectionPalette .infobox ul .listchoix:hover span i {
+  transform: rotate(0deg);
+}
+main .sectioncommande {
+  grid-template-columns: repeat(1, 1fr);
+  padding: 1em 0 3em;
+  background-color: #f6f6f6;
+  text-align: center;
+}
+main .sectioncommande a {
+  padding-left: 60px;
+  padding-right: 60px;
+}

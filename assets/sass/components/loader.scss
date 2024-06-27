@@ -1,0 +1,44 @@
+.loader {
+
+    display: flex;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    animation: 1s disparation 5000ms ease forwards;
+
+    & .loader {
+        width: 8em;
+        height: 8em;
+        border-radius: 50%;
+        display: inline-block;
+        position: relative;
+        border: 3px solid;
+        border-color: #dbdbdb $aqua-tertiaire transparent;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+    }
+
+    .loader::after {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border: 3px solid;
+        border-color: transparent $rose-secondaire $violet-primaire;
+        width: 5em;
+        height: 5em;
+        border-radius: 50%;
+        animation: rotationBack 0.5s linear infinite;
+        transform-origin: center center;
+    }
+
+
+}

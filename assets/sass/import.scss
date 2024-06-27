@@ -1,0 +1,17 @@
+@import "./templates/template.scss";
+
+@import "./utils/variables.scss";
+@import "./utils/keyframes.scss";
+@import "./utils/mixins.scss";
+@import "./utils/placeholders.scss";
+
+@import "./layout/header.scss";
+@import "./layout/footer.scss";
+
+@import "./components/btn.scss";
+@import "./components/list.scss";
+@import "./components/heart.scss";
+@import "./components/loader.scss";
+
+@import "./pages/accueil.scss";
+@import "./pages/restaurant.scss";

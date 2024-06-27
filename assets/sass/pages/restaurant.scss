@@ -1,0 +1,175 @@
+main {
+    font-family: 'Roboto', sans-serif;
+
+    & .sectionPalette {
+        @extend %gridcenter;
+        @include gridcolumns(1);
+        padding: 0 0 3em;
+        background-color: #f6f6f6;
+
+        & img {
+            object-fit: cover;
+            width: 100%;
+            height: 20em;
+            margin: 0 0 -5em 0;
+        }
+
+        & .infobox {
+            padding: 2em 2.3em 0;
+            background-color: #f6f6f6;
+            border-radius: 3em 3em 0 0;
+            width: 75%;
+
+            & h2 {
+                @include gridpos(1, auto, 1, 4);
+                justify-self: start;
+                margin: 0 0 1em;
+                font-family: "Shrikhand", cursive;
+                font-size: 1.5em;
+                display: flex;
+                justify-content: space-between;
+
+                & button {
+                    margin: 0 0 0 1em;
+                    font-size: 1em;
+                    position: relative;
+                    border: none;
+                }
+            }
+
+            & h3 {
+                @include gridpos(2, auto, 1, 4);
+                justify-self: start;
+                text-transform: uppercase;
+                font-weight: normal;
+
+                &::after {
+                    border-bottom: 3px solid $aqua-tertiaire;
+                    content: '';
+                    display: block;
+                    width: 3em;
+                }
+            }
+
+            & ul {
+                @include gridpos(3, auto, 1, 4);
+                display: grid;
+                @include gridcolumns(1);
+                grid-gap: 1.5em;
+                margin: 1em 0 2em;
+                justify-self: normal;
+
+                & .listchoix {
+                    position: relative;
+                    padding: 1em;
+                    cursor: pointer;
+                    overflow: hidden;
+                    font-size: 1em;
+
+                    & h4 {
+                        width: 85%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        transition: all 0.5s;
+                    }
+
+                    & p {
+                        width: 85%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        transition: all 0.5s;
+                    }
+
+                    & strong {
+                        position: absolute;
+                        right: 1em;
+                        bottom: 1em;
+                        transition: all 0.5s;
+                    }
+
+                    & span {
+                        font-size: 1.5em;
+                        position: absolute;
+                        top: 0;
+                        right: -5em;
+                        width: 3.5em;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: all 0.5s;
+                        color: white;
+                        background: $aqua-tertiaire;
+                    }
+
+                    & .fa-check-circle {
+                        transform: rotate(-360deg);
+                        transition: all 0.5s;
+                    }
+                }
+
+                & .listchoix {
+                    animation: show 2000ms forwards;
+                    opacity: 0;
+
+                    @for $i from 1 to 10 {
+                        &--#{$i} {
+                            animation-delay: 200ms * $i;
+                        }
+                    }
+
+                    @keyframes show {
+                        0% {
+                            transform: translateY(2em);
+                        }
+
+                        100% {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+                }
+
+                & .listchoix:hover {
+                    & p {
+                        width: 63%;
+                    }
+
+                    & h4 {
+                        width: 70%;
+                    }
+
+                    & strong {
+                        right: 6em;
+                    }
+
+                    & span {
+                        right: 0;
+
+                        & i {
+                            transform: rotate(0deg);
+                        }
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    & .sectioncommande {
+        @extend %gridcenter;
+        @include gridcolumns(1);
+        padding: 1em 0 3em;
+        background-color: $bggreyclair;
+        text-align: center;
+
+        & a {
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+
+}

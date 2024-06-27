@@ -1,0 +1,8 @@
+@mixin gridcolumns($valeur) {
+    grid-template-columns: repeat($valeur, 1fr);
+}
+
+@mixin gridpos($rowstart, $rowend, $colstart, $colend) {
+    grid-row: $rowstart unquote("/") $rowend;
+    grid-column: $colstart unquote("/") $colend;
+}

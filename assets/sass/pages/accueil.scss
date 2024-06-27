@@ -1,0 +1,192 @@
+main {
+    font-family: 'Roboto', sans-serif;
+
+
+    & .sectionsearch {
+        @extend %gridcenter;
+        @include gridcolumns(1);
+        padding: 1em;
+        background-color: $bggrey;
+        background: linear-gradient(180deg,
+                rgba(173, 173, 173, .35) 0%,
+                rgba(234, 234, 234, .75) 15%,
+                rgba(234, 234, 234, 1) 100%);
+
+        & i {
+            padding: 0 0.5em 0 0;
+        }
+    }
+
+    & .sectioninfo {
+        @extend %gridcenter;
+        @include gridcolumns(1);
+        padding: 2em 0 3em;
+        background-color: $bggreyclair;
+        text-align: center;
+
+        & h2 {
+            padding: 0 3em;
+        }
+
+        & p {
+            padding: 1em 3em 2em;
+        }
+    }
+
+    & .sectionmenu {
+        @extend %gridcenter;
+        @include gridcolumns(1);
+        padding: 3em 1em;
+
+        & h2 {
+            @include gridpos(1, auto, 1, 2);
+            justify-self: start;
+        }
+
+        & ol {
+            @include gridpos(2, auto, 1, 4);
+            display: grid;
+            @include gridcolumns(1);
+            grid-gap: 2em;
+            margin: 1em 1em 0;
+            counter-reset: listItem;
+            justify-self: normal;
+
+            @media (min-width: 1024px) {
+                @include gridcolumns(3);
+            }
+
+            & li {
+                & p {
+                    display: inline-block;
+                    position: relative;
+                    left: -0.7em;
+
+                    & i {
+                        padding: 0 1em 0 0;
+                        color: $bggrey;
+                    }
+                }
+
+            }
+
+            & li::before {
+                counter-increment: section;
+                content: counter(section);
+                position: relative;
+                left: -1.9em;
+                padding: 0.3em 0.6em;
+                border-radius: 70%;
+                background-color: $violet-primaire;
+                color: $txt-fond-sombre;
+            }
+
+            & li:hover {
+                background-color: lighten($violet-primaire, 35%);
+
+                & i {
+                    color: $violet-primaire;
+                }
+            }
+
+        }
+    }
+
+    & .sectionRestaurants {
+        @extend %gridcenter;
+        @include gridcolumns(1);
+        padding: 3em 1em;
+        background: $bggreyclair;
+
+        & h2 {
+            @include gridpos(1, auto, 1, 2);
+            justify-self: start;
+            padding-bottom: 1em;
+        }
+
+        & ul {
+            @include gridpos(2, auto, 1, 2);
+            display: grid;
+            @include gridcolumns(1);
+            grid-gap: 3em;
+            margin: 0 2em 1em 0;
+            justify-self: normal;
+
+            @media (min-width: 1024px) {
+                @include gridcolumns(2);
+                grid-gap: 5em;
+            }
+
+            & li {
+                display: inline-block;
+                width: 100%;
+
+                & a {
+                    display: block;
+                    position: relative;
+                    padding: 0 0 0.7rem 0;
+                    color: $txt-fond-clair;
+                    border-radius: 1.5em;
+                    box-shadow: 0 3px 10px rgb(0, 0, 0, 0.2);
+                    width: 100%;
+
+
+                    & .sticker {
+                        position: absolute;
+                        top: 1em;
+                        right: 1em;
+                        background-color: $vert-clair;
+                        color: $txt-fond-vert;
+                        padding: 0.4em 0.6em;
+                        border-radius: 0.2em;
+                    }
+
+                    & img {
+                        height: 12.5em;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 20px 20px 0 0;
+                        padding: 0 0 0.5em 0;
+                    }
+
+
+                    & h3,
+                    p {
+                        padding: 0 1rem 0.5rem;
+                    }
+
+                    & .card-choise {
+                        position: absolute;
+                        bottom: 2.5rem;
+                        right: 1.5rem;
+                        font-size: 1.5em;
+                        cursor: pointer;
+                    }
+
+
+                }
+            }
+        }
+
+
+    }
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        /* Début de l'animation avec une opacité de 0 */
+    }
+
+    100% {
+        opacity: 1;
+        /* Fin de l'animation avec une opacité de 1 */
+    }
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
